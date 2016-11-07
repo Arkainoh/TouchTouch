@@ -19,6 +19,7 @@
     <!-- added -->
     <string name="score">0</string>
     <string name="scoreTitle">SCORE</string>
+    <string name="reset">RESET</string>
 
     <!--  BluetoothChat -->
     <string name="send">Send</string>

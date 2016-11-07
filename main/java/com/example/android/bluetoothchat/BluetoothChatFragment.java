@@ -42,6 +42,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.media.SoundPool;
+import android.media.AudioManager;
+
 import com.example.android.common.logger.Log;
 
 /**
@@ -60,6 +63,12 @@ public class BluetoothChatFragment extends Fragment {
     private ListView mConversationView;
     private EditText mOutEditText;
     private Button mSendButton;
+
+
+    private TextView mScore;
+    private int currentScore;
+    private SoundPool sound;
+    private int currentSound;
 
     /**
      * Name of the connected device
@@ -149,9 +158,15 @@ public class BluetoothChatFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) { //화면을 구성하는 부분
         mConversationView = (ListView) view.findViewById(R.id.in);
+        mScore = (TextView) view.findViewById(R.id.score); //added by Inho Kim
+        currentScore = 0; //added by Inho Kim
+        sound = new SoundPool(1, AudioManager.STREAM_MUSIC,0);
+        currentSound = sound.load(getContext(), R.raw.testsound, 1);
+
 
         mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
         mSendButton = (Button) view.findViewById(R.id.button_send);
+
     }
 
     /**
@@ -175,9 +190,24 @@ public class BluetoothChatFragment extends Fragment {
                 // Send a message using content of the edit text widget
                 View view = getView();
                 if (null != view) {
+
                     TextView textView = (TextView) view.findViewById(R.id.edit_text_out);
                     String message = textView.getText().toString();
                     sendMessage(message);
+                }
+            }
+        });
+
+        mScore.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Send a message using content of the edit text widget
+                View view = getView();
+                if (null != view) {
+                    sound.play(currentSound, 1.0F, 1.0F,  1,  0,  1.0F);
+                    TextView textView = (TextView) view.findViewById(R.id.score);
+                    currentScore += 100;
+                    String newScore = new String(""+currentScore);
+                    textView.setText(newScore);
                 }
             }
         });
