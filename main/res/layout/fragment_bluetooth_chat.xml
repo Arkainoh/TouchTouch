@@ -27,6 +27,37 @@
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll" />
 
+
+
+    <TextView
+        style="@style/Widget.SampleMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/scoreTitle"
+        android:typeface= "monospace"
+        android:textSize= "15pt"
+        android:textColor= "#7EC0EE"
+        android:textStyle= "bold"
+        android:id="@+id/scoreTitle" />
+
+    <TextView
+        style="@style/Widget.SampleMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:text="@string/score"
+        android:typeface= "monospace"
+        android:textSize= "15pt"
+        android:textColor= "#7EC0EE"
+        android:textStyle= "bold"
+        android:id="@+id/score" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
