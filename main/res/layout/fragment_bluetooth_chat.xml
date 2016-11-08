@@ -27,6 +27,45 @@
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll" />
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20pt"
+        android:paddingRight="20pt"
+        android:paddingTop="10pt"
+        android:paddingBottom="10pt"
+        >
+
+        <!-- 8분음표 -->
+        <TextView
+            android:background="@drawable/oval"
+            android:layout_width="32pt"
+            android:layout_height="32pt"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/button_left"
+            />
+        <!-- 음표 두개 이어진 것-->
+        <TextView
+            android:background="@drawable/oval"
+            android:layout_width="32pt"
+            android:layout_height="32pt"
+            android:layout_centerInParent="true"
+            android:id="@+id/button_center"
+            />
+        <!-- 2분음표 -->
+        <TextView
+            android:background="@drawable/oval"
+            android:layout_width="32pt"
+            android:layout_height="32pt"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/button_right"
+            />
+    </RelativeLayout>
+
+
     <TextView
         style="@style/Widget.SampleMessage"
         android:layout_width="match_parent"

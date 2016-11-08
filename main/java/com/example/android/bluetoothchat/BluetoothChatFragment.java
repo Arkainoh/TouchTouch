@@ -65,10 +65,13 @@ public class BluetoothChatFragment extends Fragment {
     private Button mSendButton;
 
 
-    private TextView mScore;
-    private int currentScore;
-    private SoundPool sound;
-    private int currentSound;
+    private TextView mScore; //현재 점수를 표시
+    private int currentScore; //현재 점수
+    private SoundPool sound; //음악을 재생하기 위한 인스턴스
+    private int currentSound; //터치 이벤트가 발생했을 때 재생할 음악의 id
+    private TextView mLeftButton;
+    private TextView mCenterButton;
+    private TextView mRightButton;
 
     /**
      * Name of the connected device
@@ -163,6 +166,9 @@ public class BluetoothChatFragment extends Fragment {
         sound = new SoundPool(1, AudioManager.STREAM_MUSIC,0);
         currentSound = sound.load(getContext(), R.raw.testsound, 1);
 
+        mLeftButton = (TextView) view.findViewById(R.id.button_left);
+        mCenterButton = (TextView) view.findViewById(R.id.button_center);
+        mRightButton = (TextView) view.findViewById(R.id.button_right);
 
         mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
         mSendButton = (Button) view.findViewById(R.id.button_send);
@@ -198,19 +204,48 @@ public class BluetoothChatFragment extends Fragment {
             }
         });
 
+        // 점수 표시부분 리스너 등록
         mScore.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Send a message using content of the edit text widget
                 View view = getView();
                 if (null != view) {
                     sound.play(currentSound, 1.0F, 1.0F,  1,  0,  1.0F);
                     TextView textView = (TextView) view.findViewById(R.id.score);
                     currentScore += 100;
-                    String newScore = new String(""+currentScore);
+                    String newScore = ""+currentScore;
                     textView.setText(newScore);
                 }
             }
         });
+
+        mLeftButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                View view = getView();
+                if (null != view) {
+                    //todo
+                    Toast.makeText(getActivity(), "Left", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        mCenterButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                View view = getView();
+                if (null != view) {
+                    //todo
+                    Toast.makeText(getActivity(), "Center", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        mRightButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                View view = getView();
+                if (null != view) {
+                    //todo
+                    Toast.makeText(getActivity(), "Right", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
         // Initialize the BluetoothChatService to perform bluetooth connections
         mChatService = new BluetoothChatService(getActivity(), mHandler);
