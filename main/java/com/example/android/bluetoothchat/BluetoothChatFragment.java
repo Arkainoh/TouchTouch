@@ -44,6 +44,8 @@ import android.widget.Toast;
 
 import android.media.SoundPool;
 import android.media.AudioManager;
+import android.os.Vibrator;
+import android.content.Context;
 
 import com.example.android.common.logger.Log;
 
@@ -72,6 +74,7 @@ public class BluetoothChatFragment extends Fragment {
     private TextView mLeftButton;
     private TextView mCenterButton;
     private TextView mRightButton;
+    private Vibrator mVibrator;
 
     /**
      * Name of the connected device
@@ -111,6 +114,8 @@ public class BluetoothChatFragment extends Fragment {
             Toast.makeText(activity, "Bluetooth is not available", Toast.LENGTH_LONG).show();
             activity.finish();
         }
+
+
     }
 
 
@@ -126,6 +131,9 @@ public class BluetoothChatFragment extends Fragment {
         } else if (mChatService == null) {
             setupChat();
         }
+        //added by Inho Kim
+        //소리가 나지 않는다면 디바이스 설정 -> 소리 -> 진동 세기 -> 알림 부분을 최대로 해본다.
+        mVibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
@@ -210,10 +218,9 @@ public class BluetoothChatFragment extends Fragment {
                 View view = getView();
                 if (null != view) {
                     sound.play(currentSound, 1.0F, 1.0F,  1,  0,  1.0F);
-                    TextView textView = (TextView) view.findViewById(R.id.score);
+                    mVibrator.vibrate(300);
                     currentScore += 100;
-                    String newScore = ""+currentScore;
-                    textView.setText(newScore);
+                    mScore.setText(""+currentScore);
                 }
             }
         });
