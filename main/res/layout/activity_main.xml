@@ -1,65 +1,220 @@
-<!--
-  Copyright 2013 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView">
 
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:baselineAligned="true">
 
-      http://www.apache.org/licenses/LICENSE-2.0
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20pt"
+            android:paddingRight="20pt"
+            android:paddingTop="10pt"
+            android:paddingBottom="10pt"
+            >
 
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
-  -->
-<LinearLayout
-      xmlns:android="http://schemas.android.com/apk/res/android"
-      android:orientation="vertical"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:id="@+id/sample_main_layout">
-
-    <ViewAnimator
-          android:id="@+id/sample_output"
-          android:layout_width="match_parent"
-          android:layout_height="0px"
-          android:layout_weight="0.32">
-
-        <ScrollView
-              style="@style/Widget.SampleMessageTile"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
+            <!-- 8분음표 -->
             <TextView
-                  style="@style/Widget.SampleMessage"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:paddingLeft="@dimen/horizontal_page_margin"
-                  android:paddingRight="@dimen/horizontal_page_margin"
-                  android:paddingTop="@dimen/vertical_page_margin"
-                  android:paddingBottom="@dimen/vertical_page_margin"
-                  android:text="@string/intro_message" />
-        </ScrollView>
+                android:background="@drawable/note_one"
+                android:layout_width="25pt"
+                android:layout_height="25pt"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/button_left"
+                />
+            <!-- 음표 두개 이어진 것-->
+            <TextView
+                android:background="@drawable/note_double"
+                android:layout_width="25pt"
+                android:layout_height="25pt"
+                android:layout_centerInParent="true"
+                android:id="@+id/button_center"
+                />
+            <!-- 2분음표 -->
+            <TextView
+                android:background="@drawable/note_long"
+                android:layout_width="25pt"
+                android:layout_height="25pt"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/button_right"
+                />
+        </RelativeLayout>
 
-        <fragment
-              android:name="com.example.android.common.logger.LogFragment"
-              android:id="@+id/log_fragment"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/scoreTitle"
+            android:typeface= "monospace"
+            android:textSize= "15pt"
+            android:textColor= "#7EC0EE"
+            android:textStyle= "bold"
+            android:id="@+id/scoreTitle" />
 
-    </ViewAnimator>
+        <RelativeLayout android:id="@+id/RelativeLayout01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="100pt"
+                android:layout_height="100pt"
+                android:gravity="center"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
+                android:paddingTop="30dp"
+                android:paddingBottom="30dp"
+                android:text="@string/score"
+                android:typeface= "monospace"
+                android:textSize= "15pt"
+                android:textColor= "#7EC0EE"
+                android:textStyle= "bold"
+                android:background="@drawable/oval"
+                android:layout_centerInParent="true"
+                android:id="@+id/score" />
+        </RelativeLayout>
 
-    <View
-          android:layout_width="match_parent"
-          android:layout_height="1dp"
-          android:background="@android:color/darker_gray" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Enable Bluetooth"
+            android:id="@+id/enableBluetooth"
+            android:enabled="true"
+            android:visibility="gone"
+            android:focusableInTouchMode="true" />
 
-    <FrameLayout
-          android:id="@+id/sample_content_fragment"
-          android:layout_weight="0.58"
-          android:layout_width="match_parent"
-          android:layout_height="0px" />
+<!--
+        <TextView
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:text="Find Device"
+            android:layout_marginTop="5dip" />
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scanStatus" />
+-->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scan"
+            android:id="@+id/scan"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:enabled="false" />
+<!--
+        <TextView
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:text="Connection"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dip" />
+-->
 
+
+<!--
+        <TextView
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:text="Connect Device"
+            android:layout_marginTop="5dip" />
+-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:id="@+id/connectionStatus" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5pt"
+            android:text="Connect"
+            android:id="@+id/connect"
+            android:paddingLeft="10pt"
+            android:paddingRight="10pt"
+            android:paddingTop="10pt"
+            android:paddingBottom="10pt"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button"
+            android:enabled="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5pt"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/deviceInfo" />
+
+        <!--
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView5"
+                    android:text=""
+                    android:layout_marginTop="5dip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/textView6" />
+        -->
+        <view
+            class="arkainoh.touchtouch.EditData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/value" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="gone"
+            android:id="@+id/sendButtons">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Zero"
+                android:id="@+id/sendZero"
+                android:layout_weight="1"
+                android:enabled="false" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Value"
+                android:id="@+id/sendValue"
+                android:layout_weight="1"
+                android:enabled="false" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
