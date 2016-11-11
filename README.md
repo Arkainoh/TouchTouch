@@ -1,6 +1,6 @@
 # TouchTouch
 Abstract: <br>
-- Physical Computing Project for Art Hackerthon: Robot and Drone
+- Android & Physical Computing Project for Art Hackerthon: Robot and Drone
 
 ----
 Demo: <br>
